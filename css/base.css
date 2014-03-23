@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Denk+One);
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Denk One', 'Trebuchet MS', sans-serif;
+	font-size: 13px;
+}
+a,a:visited {
+	color: #333;
+}
+.game-title {
+	width: 429px;
+	margin: 40px auto 0 auto;
+	font-size: 36px;
+	font-weight: bold;
+}
+.game-timer {
+	float: right;
+	font-size: 20px;
+	background: #000;
+	border-radius: 3px;
+	color: #FFF;
+	margin-top: 5px;
+	padding: 2px 20px 3px 20px;
+}
+.game-description {
+	clear: both;
+	width: 429px;
+	margin: 10px auto 0 auto;
+	font-size: 13px;
+	text-align: justify;
+}
+.grid-container {
+	width: 429px;
+	height: 429px;
+	margin: 20px auto 0 auto;
+	background: #000;
+	padding: 5px;
+	background: ;
+}
+.grid-row {
+	clear: both;
+}
+.grid-cell,.tile,.grid-cell-active {
+	float: left;
+	height: 45px;
+	width: 45px;
+	background: #FFF;
+	text-align: center;
+	font-size: 30px;
+	margin: 1px;
+}
+.grid-cell-state-default {
+	background: rgba(200,200,200,1);
+}
+.grid-cell-state-hover {
+	background: rgba(150,150,150,1);
+}
+.grid-cell-state-error {
+	background: #F00;
+	color: #FFF;
+}
+.vert-line {
+	float: left;
+	height: 45px;
+	width: 3px;
+}
+.horz-line {
+	clear: both;
+	height: 3px;
+	width: 427px;
+}
+.game-tiles {
+	width: 441px;
+	height: 42px;
+	margin: 10px auto 0 auto;
+	padding: 5px;
+}
+.tile {
+	height: 40px;
+	border: 1px solid #000;
+	cursor: move;
+	border-radius: 3px;
+}
+.game-over {
+	position: absolute;
+	top: 0;
+	background: rgba(0,0,0,0.98);
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	display: none;
+}
+.game-over-message {
+	width: 500px;
+	text-align: center;
+	margin: 200px auto;
+	color: #FFF;
+}
+.clear {
+	clear: both;
+	height: 50px;
+}
