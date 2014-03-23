@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sudoku</title>
+	<link rel='stylesheet' href='css/base.css' />
+	<script src='js/jquery.min.js'></script>
+	<script src='js/sudoku.js'></script>
+	<script src='js/data.js'></script>
+	<script src='js/timer.js'></script>
+	<script src='js/jquery-ui-1.10.4.custom.min.js'></script>
+	<script>
+	$(document).ready(function(){
+		loadSudoku();
+	});
+	$(function(){
+		$('.game-over').click(function(){
+			$(this).fadeOut(1000,function(){
+				window.location.href = 'index.html';
+			});
+		});
+		$('.tile').draggable({
+			appendTo: 'body',
+			helper: 'clone'
+		});
+		$('.grid-cell').droppable({
+			activeClass: 'grid-cell-state-default',
+			hoverClass: 'grid-cell-state-hover',
+			accept: ':not(.ui-sortable-helper)',
+			drop: function(event,ui) {
+				if($('#game-time').html()=='0')
+					updateTimer();					
+				var droppedTile = ui.draggable.text();
+				$(this).html(droppedTile);
+				new Sudoku();
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class='game-title'>Sudoku<div class='game-timer'><span id='game-time'>0</span>s</div></div>	
+	<div class='game-description'>Solve the given sudoku to win the game. It is as simple as that. Have fun and good luck.</div>
+	<div class='grid-container'>
+	<script>
+	for(var row=0;row<9;row++) {
+		if(row==3 || row==6) {
+			document.write('<div class="horz-line"></div>');
+		}
+		document.write('<div class="grid-row">');
+		for(var col=0;col<9;col++) {
+			if(col==3|| col==6)
+				document.write('<div class="vert-line"></div>');
+			document.write('<div class="grid-cell" id="gridcell'+row+''+col+'"> </div>');
+		}
+		document.write('</div>');
+	}
+	</script>
+	</div>
+	<div class='game-tiles'>
+	<script>
+	for(var col=0;col<9;col++)
+		document.write('<div class="tile">'+(col+1)+'</div>');
+	</script>
+	</div>
+	<div class='game-description' style='margin-top:30px;'><strong>HOW TO PLAY THE GAME:</strong> Drag and drop the numbers at the bottom of the grid to place them on the grid. No row, column or one of the nine 3x3 boxes can have the same digit twice. The timer starts after the first move.</div>
+	<div class='game-description'><strong>CREDITS:</strong> This game has been developed by <a href='https://www.facebook.com/amit.data92'>Amit Datta</a>. It is based on the traditional puzzle game, <a href='https://en.wikipedia.org/wiki/Sudoku'>SUDOKU</a>.</div>
+	<div class='clear'></div>
+	<div class='game-over'>
+		<div class='game-over-message'>
+			<div style='font-size: 60px;'>Congratulations!</div>
+			<div style=''>Sudoku solved. I haven't yet learnt to generate random new Sudokus. But I promise that<br />I will be back with much more soon.</div>
+		</div>
+	</div>
+</body>
+</html>
